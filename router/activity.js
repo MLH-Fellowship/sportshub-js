@@ -1,16 +1,11 @@
 const express = require("express");
+const { getActivities, postActivity, deleteActivity } = require("../controller/activity");
 const router = express.Router();
 
-router.get("/", (req, res) => {
-  res.send("GET Activities");
-});
+router.get("/", getActivities);
 
-router.post("/", (req, res) => {
-  res.send("POST Activity");
-});
+router.post("/", postActivity);
 
-router.delete("/:id", (req, res) => {
-  res.send("DELETE Activity");
-});
+router.delete("/:id", deleteActivity);
 
 module.exports = router;
