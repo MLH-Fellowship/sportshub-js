@@ -8,6 +8,7 @@
   "parserOptions": {
     "ecmaVersion": "latest"
   },
+  "ignorePatterns": "**/*.test.js",
   "rules": {
     "quotes": ["error", "double"]
   }

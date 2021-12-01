@@ -1,17 +1,16 @@
-const Sqlite = require("sqlite3");
-const db = new Sqlite.Database("database/activity.db");
+const db = require("../db");
 
 exports.getActivities = (req, res) => {
   db.serialize(() => {
-    db.run("SELECT * FROM activity", function (err, allRows) {
+    db.each("SELECT * FROM activity", function (err, allRows) {
       if (err) {
         res.send("Something went unexpected!");
         return console.log("Something went unexpected!", err.message);
       }
-      res.send("RECORDS");
-      console.log(allRows);
+      return res.send([allRows]);
     });
   });
+  return res.send("No Record found!");
 };
 
 exports.postActivity = (req, res) => {
